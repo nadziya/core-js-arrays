@@ -300,8 +300,9 @@ function doubleArray(arr) {
  *    toStringList([1, 2, 3, 4, 5]) => '1,2,3,4,5'
  *    toStringList(['rock', 'paper', 'scissors']) => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  const result = arr.join();
+  return result;
 }
 
 /**
@@ -316,8 +317,9 @@ function toStringList(/* arr */) {
  *   distinct([ 1, 1, 2, 2, 3, 3, 4, 4]) => [ 1, 2, 3, 4]
  *   distinct([]) => []
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const result = [...new Set(arr)];
+  return result;
 }
 
 /**
@@ -333,8 +335,34 @@ function distinct(/* arr */) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size) {
+  const arr = [];
+  const concatArr2 = [];
+  const concatArr3 = [];
+  let result = [];
+  function sizeArray(num) {
+    if (num > 0) {
+      for (let i = 0; i < num; i += 1) {
+        arr[i] = Array(num).fill(0);
+      }
+    }
+    return arr;
+  }
+  sizeArray(size);
+  if (n === 1) {
+    result = arr.flat(1);
+  } else if (n === 3) {
+    for (let k = 0; k < n - 1; k += 1) {
+      concatArr2[k] = arr;
+    }
+    result = concatArr2;
+  } else if (n === 4) {
+    for (let z = 0; z < n; z += 1) {
+      concatArr3[z] = arr;
+    }
+    result = concatArr3;
+  }
+  return result;
 }
 
 /**
@@ -348,8 +376,16 @@ function createNDimensionalArray(/* n, size */) {
  *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  let result = [];
+  let count = 1;
+  for (let i = 0; i < nestedArray.length; i += 1) {
+    if (typeof nestedArray[i] === 'object') {
+      count += 1;
+    }
+  }
+  result = nestedArray.flat(count);
+  return result;
 }
 
 /**
