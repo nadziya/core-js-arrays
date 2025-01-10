@@ -37,8 +37,40 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  let sumArray = [];
+  if (arr1.length === 0 && arr2.length === 0) {
+    sumArray = [];
+  } else if (arr1.length === 0) {
+    sumArray = arr2;
+  } else if (arr2.length === 0) {
+    sumArray = arr1;
+  } else if (arr1.length === arr2.length) {
+    for (let i = 0; i < arr1.length; i += 1) {
+      sumArray.push(arr1[i] + arr2[i]);
+    }
+  } else if (arr1.length > arr2.length) {
+    for (let j = 0; j < arr2.length; j += 1) {
+      sumArray.push(arr1[j] + arr2[j]);
+    }
+    const difLenght = arr1.length - arr2.length;
+    for (let doba1 = arr1.length - difLenght; doba1 < arr1.length; doba1 += 1) {
+      sumArray.push(arr1[doba1]);
+    }
+  } else if (arr1.length < arr2.length) {
+    for (let k = 0; k < arr1.length; k += 1) {
+      sumArray.push(arr1[k] + arr2[k]);
+    }
+    const difflenght2 = arr2.length - arr1.length;
+    for (
+      let doba2 = arr2.length - difflenght2;
+      doba2 < arr2.length;
+      doba2 += 1
+    ) {
+      sumArray.push(arr2[doba2]);
+    }
+  }
+  return sumArray;
 }
 
 /**
@@ -53,8 +85,8 @@ function sumArrays(/* arr1, arr2 */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  return arr.indexOf(value);
 }
 
 /**
@@ -71,8 +103,10 @@ function findElement(/* arr, value */) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const result = arr.filter((number) => number === item);
+  const count = result.length;
+  return count;
 }
 
 /**
@@ -87,8 +121,17 @@ function findAllOccurrences(/* arr, item */) {
  *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const result = arr.filter(
+    (item) =>
+      item !== false &&
+      item !== 0 &&
+      Number.isNaN(item) !== true &&
+      item !== '' &&
+      item !== null &&
+      item !== undefined
+  );
+  return result;
 }
 
 /**
@@ -101,8 +144,11 @@ function removeFalsyValues(/* arr */) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const lenghtArr = arr.map((element) => {
+    return element.length;
+  });
+  return lenghtArr;
 }
 
 /**
